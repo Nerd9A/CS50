@@ -1,4 +1,3 @@
-#include <cs50.h>
 #include <stdio.h>
 
 int add(int a, int b);
@@ -6,52 +5,66 @@ int subtract(int a, int b);
 int multiply(int a, int b);
 int divide(int a, int b);
 
-int main (void)
+int main(void)
 {
+    int operation;
+    printf("\n1-Addition\n2-Subtraction\n3-Multiplication\n4-Division\n\nChoose Operation: ");
+    scanf("%d", &operation);
 
-    int operation = get_int("\n1-Addition\n2-Subtraction\n3-Multiplication\n4-Division\n\nChoose Operation : ");
-
-    if (operation >= 1)
+    if (operation >= 1 && operation <= 4)
     {
-        int x = get_int("\nValue of X : ");
-        int y = get_int("Value of Y : ");
+        int x, y;
+        printf("\nValue of X: ");
+        scanf("%d", &x);
+        printf("Value of Y: ");
+        scanf("%d", &y);
 
         if (operation == 1)
         {
-            printf("\nSum : %i\n\n", add(x, y));
+            printf("\nSum: %d\n\n", add(x, y));
         }
         else if (operation == 2)
         {
-            printf("\nDifference : %i\n\n", subtract(x, y));
+            printf("\nDifference: %d\n\n", subtract(x, y));
         }
         else if (operation == 3)
         {
-            printf("\nProduct : %i\n\n", multiply(x, y));
+            printf("\nProduct: %d\n\n", multiply(x, y));
         }
         else if (operation == 4)
         {
-            printf("\nQuotient : %i\n\n", divide(x, y));
+            if (y != 0)
+            {
+                printf("\nQuotient: %d\n\n", divide(x, y));
+            }
+            else
+            {
+                printf("Error: Division by zero\n");
+            }
         }
-
     }
-
-
+    else
+    {
+        printf("Invalid operation\n");
+    }
 }
 
-int add(int a,  int b)
+int add(int a, int b)
 {
     return a + b;
 }
+
 int subtract(int a, int b)
 {
     return a - b;
 }
+
 int multiply(int a, int b)
 {
     return a * b;
 }
+
 int divide(int a, int b)
 {
     return a / b;
 }
-
